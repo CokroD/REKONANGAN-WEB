@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R Dashboard | REKONANGAN</title>
+    <link>/tag/r-dashboard/</link>
+      <atom:link href="/tag/r-dashboard/index.xml" rel="self" type="application/rss+xml" />
+    <description>R Dashboard</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Fri, 29 May 2020 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/images/icon_hu0b7a4cb9992c9ac0e91bd28ffd38dd00_9727_512x512_fill_lanczos_center_2.png</url>
+      <title>R Dashboard</title>
+      <link>/tag/r-dashboard/</link>
+    </image>
+    
+    <item>
+      <title>Covid19 in 4 ASEAN Countries</title>
+      <link>/post/asean-covid19/</link>
+      <pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate>
+      <guid>/post/asean-covid19/</guid>
+      <description>
+&lt;link href=&#34;/rmarkdown-libs/font-awesome/css/all.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;link href=&#34;/rmarkdown-libs/font-awesome/css/v4-shims.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/htmlwidgets/htmlwidgets.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/plotly-binding/plotly.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/typedarray/typedarray.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/jquery/jquery.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/crosstalk/css/crosstalk.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/crosstalk/js/crosstalk.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/plotly-htmlwidgets-css/plotly-htmlwidgets.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/plotly-main/plotly-latest.min.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/leaflet/leaflet.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet/leaflet.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/leafletfix/leafletfix.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/Proj4Leaflet/proj4-compressed.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/Proj4Leaflet/proj4leaflet.js&#34;&gt;&lt;/script&gt;
+&lt;link href=&#34;/rmarkdown-libs/rstudio_leaflet/rstudio_leaflet.css&#34; rel=&#34;stylesheet&#34; /&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet-binding/leaflet.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet-providers/leaflet-providers_1.9.0.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;/rmarkdown-libs/leaflet-providers-plugin/leaflet-providers-plugin.js&#34;&gt;&lt;/script&gt;
+
+
+&lt;div id=&#34;summary&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Summary&lt;/h1&gt;
+&lt;div id=&#34;row&#34; class=&#34;section level2&#34; data-width=&#34;400&#34;&gt;
+&lt;h2&gt;Row&lt;/h2&gt;
+&lt;div id=&#34;confirmed&#34; class=&#34;section level3 value-box&#34;&gt;
+&lt;h3&gt;confirmed&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;valueBox(
+  value = paste(format(sum(df$confirmed), big.mark = &amp;quot;,&amp;quot;), &amp;quot;&amp;quot;, sep = &amp;quot; &amp;quot;),
+  caption = &amp;quot;Total confirmed cases today&amp;quot;,
+  icon = &amp;quot;fas fa-user-md&amp;quot;,
+  color = confirmed_color
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;preserve6d2da57f9e2cf58b&lt;/p&gt;
+&lt;!-- ### active {.value-box} --&gt;
+&lt;!-- ```{r} --&gt;
+&lt;!-- valueBox( --&gt;
+&lt;!--   value = paste(format(sum(df$unrecovered, na.rm = TRUE), big.mark = &#34;,&#34;), &#34; (&#34;, --&gt;
+&lt;!--     round(100 * sum(df$unrecovered, na.rm = TRUE) / sum(df$confirmed), 1), --&gt;
+&lt;!--     &#34;%)&#34;, --&gt;
+&lt;!--     sep = &#34;&#34; --&gt;
+&lt;!--   ), --&gt;
+&lt;!--   caption = &#34;Active cases (% of total cases)&#34;, icon = &#34;fas fa-ambulance&#34;, --&gt;
+&lt;!--   color = active_color --&gt;
+&lt;!-- ) --&gt;
+&lt;!-- ``` --&gt;
+&lt;/div&gt;
+&lt;div id=&#34;death&#34; class=&#34;section level3 value-box&#34;&gt;
+&lt;h3&gt;death&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;valueBox(
+  value = paste(format(sum(df$death, na.rm = TRUE), big.mark = &amp;quot;,&amp;quot;), &amp;quot; (&amp;quot;,
+    round(100 * sum(df$death, na.rm = TRUE) / sum(df$confirmed), 1),
+    &amp;quot;%)&amp;quot;,
+    sep = &amp;quot;&amp;quot;
+  ),
+  caption = &amp;quot;Death cases (death rate) today&amp;quot;,
+  icon = &amp;quot;fas fa-heart-broken&amp;quot;,
+  color = death_color
+)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;preserve9bb7eb3e1b5efcb6&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;row-1&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Row&lt;/h2&gt;
+&lt;div id=&#34;daily-cumulative-cases-by-type-indonesia-only&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;strong&gt;Daily cumulative cases by type&lt;/strong&gt; (Indonesia only)&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;plotly::plot_ly(data = df_daily) %&amp;gt;%
+  plotly::add_trace(
+    x = ~date,
+    # y = ~active_cum,
+    y = ~confirmed_cum,
+    type = &amp;quot;scatter&amp;quot;,
+    mode = &amp;quot;lines+markers&amp;quot;,
+    # name = &amp;quot;Active&amp;quot;,
+    name = &amp;quot;Confirmed&amp;quot;,
+    line = list(color = active_color),
+    marker = list(color = active_color)
+  ) %&amp;gt;%
+  plotly::add_trace(
+    x = ~date,
+    y = ~death_cum,
+    type = &amp;quot;scatter&amp;quot;,
+    mode = &amp;quot;lines+markers&amp;quot;,
+    name = &amp;quot;Death&amp;quot;,
+    line = list(color = death_color),
+    marker = list(color = death_color)
+  ) %&amp;gt;%
+  plotly::add_annotations(
+    x = as.Date(&amp;quot;2020-03-01&amp;quot;),
+    y = 1,
+    text = paste(&amp;quot;First case&amp;quot;),
+    xref = &amp;quot;x&amp;quot;,
+    yref = &amp;quot;y&amp;quot;,
+    arrowhead = 5,
+    arrowhead = 3,
+    arrowsize = 1,
+    showarrow = TRUE,
+    ax = -10,
+    ay = -90
+  ) %&amp;gt;%
+  plotly::add_annotations(
+    x = as.Date(&amp;quot;2020-03-11&amp;quot;),
+    y = 3,
+    text = paste(&amp;quot;First death&amp;quot;),
+    xref = &amp;quot;x&amp;quot;,
+    yref = &amp;quot;y&amp;quot;,
+    arrowhead = 5,
+    arrowhead = 3,
+    arrowsize = 1,
+    showarrow = TRUE,
+    ax = -90,
+    ay = -90
+  ) %&amp;gt;%
+  plotly::layout(
+    title = &amp;quot;&amp;quot;,
+    yaxis = list(title = &amp;quot;Cumulative number of cases&amp;quot;),
+    xaxis = list(title = &amp;quot;Date&amp;quot;),
+    legend = list(x = 0.1, y = 0.9),
+    hovermode = &amp;quot;compare&amp;quot;
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;preserve65bdb4fcd750ca9c&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;comparison&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Comparison&lt;/h1&gt;
+&lt;div id=&#34;column&#34; class=&#34;section level2&#34; data-width=&#34;400&#34;&gt;
+&lt;h2&gt;Column&lt;/h2&gt;
+&lt;div id=&#34;daily-new-confirmed-cases&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;strong&gt;Daily new confirmed cases&lt;/strong&gt;&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;daily_confirmed &amp;lt;- coronavirus %&amp;gt;%
+  dplyr::filter(type == &amp;quot;confirmed&amp;quot;) %&amp;gt;%
+  dplyr::filter(date &amp;gt;= &amp;quot;2020-02-29&amp;quot;) %&amp;gt;%
+  dplyr::mutate(country = country) %&amp;gt;%
+  dplyr::group_by(date, country) %&amp;gt;%
+  dplyr::summarise(total = sum(cases)) %&amp;gt;%
+  dplyr::ungroup() %&amp;gt;%
+  tidyr::pivot_wider(names_from = country, values_from = total)
+#----------------------------------------
+# Plotting the data
+daily_confirmed %&amp;gt;%
+  plotly::plot_ly() %&amp;gt;%
+  plotly::add_trace(
+    x = ~date,
+    y = ~Indonesia,
+    type = &amp;quot;scatter&amp;quot;,
+    mode = &amp;quot;lines+markers&amp;quot;,
+    name = &amp;quot;Indonesia&amp;quot;
+  ) %&amp;gt;%
+  # plotly::add_trace(
+  #   x = ~date,
+  #   y = ~Malaysia,
+  #   type = &amp;quot;scatter&amp;quot;,
+  #   mode = &amp;quot;lines+markers&amp;quot;,
+  #   name = &amp;quot;Malaysia&amp;quot;
+  # ) %&amp;gt;%
+  # plotly::add_trace(
+  #   x = ~date,
+  #   y = ~Singapore,
+  #   type = &amp;quot;scatter&amp;quot;,
+  #   mode = &amp;quot;lines+markers&amp;quot;,
+  #   name = &amp;quot;Singapore&amp;quot;
+  # ) %&amp;gt;%
+  plotly::add_trace(
+    x = ~date,
+    y = ~Thailand,
+    type = &amp;quot;scatter&amp;quot;,
+    mode = &amp;quot;lines+markers&amp;quot;,
+    name = &amp;quot;Thailand&amp;quot;
+  ) %&amp;gt;%
+  plotly::add_trace(
+    x = ~date,
+    y = ~Singapore,
+    type = &amp;quot;scatter&amp;quot;,
+    mode = &amp;quot;lines+markers&amp;quot;,
+    name = &amp;quot;Singapore&amp;quot;
+  ) %&amp;gt;%
+  plotly::add_trace(
+    x = ~date,
+    y = ~Malaysia,
+    type = &amp;quot;scatter&amp;quot;,
+    mode = &amp;quot;lines+markers&amp;quot;,
+    name = &amp;quot;Malaysia&amp;quot;
+  ) %&amp;gt;%
+  plotly::layout(
+    title = &amp;quot;&amp;quot;,
+    legend = list(x = 0.1, y = 0.9),
+    yaxis = list(title = &amp;quot;New confirmed cases&amp;quot;),
+    xaxis = list(title = &amp;quot;Date&amp;quot;),
+    # paper_bgcolor = &amp;quot;black&amp;quot;,
+    # plot_bgcolor = &amp;quot;black&amp;quot;,
+    # font = list(color = &amp;#39;white&amp;#39;),
+    hovermode = &amp;quot;compare&amp;quot;,
+    margin = list(
+      # l = 60,
+      # r = 40,
+      b = 10,
+      t = 10,
+      pad = 2
+    )
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;preserve172e45c30fa62ad3&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;cases-distribution-by-type&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;strong&gt;Cases distribution by type&lt;/strong&gt;&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;df_ASEAN &amp;lt;- coronavirus %&amp;gt;%
+  # dplyr::filter(date == max(date)) %&amp;gt;%
+  dplyr::filter(country == &amp;quot;Indonesia&amp;quot; |
+    country == &amp;quot;Malaysia&amp;quot; |
+    country == &amp;quot;Singapore&amp;quot; |
+    country == &amp;quot;Thailand&amp;quot;) %&amp;gt;%
+  dplyr::group_by(country, type) %&amp;gt;%
+  dplyr::summarise(total = sum(cases)) %&amp;gt;%
+  tidyr::pivot_wider(
+    names_from = type,
+    values_from = total
+  ) %&amp;gt;%
+  # dplyr::mutate(unrecovered = confirmed - ifelse(is.na(recovered), 0, recovered) - ifelse(is.na(death), 0, death)) %&amp;gt;%
+  dplyr::mutate(unrecovered = confirmed - ifelse(is.na(death), 0, death)) %&amp;gt;%
+  dplyr::arrange(confirmed) %&amp;gt;%
+  dplyr::ungroup() %&amp;gt;%
+  dplyr::mutate(country = dplyr::if_else(country == &amp;quot;United Arab Emirates&amp;quot;, &amp;quot;UAE&amp;quot;, country)) %&amp;gt;%
+  dplyr::mutate(country = dplyr::if_else(country == &amp;quot;Mainland China&amp;quot;, &amp;quot;China&amp;quot;, country)) %&amp;gt;%
+  dplyr::mutate(country = dplyr::if_else(country == &amp;quot;North Macedonia&amp;quot;, &amp;quot;N.Macedonia&amp;quot;, country)) %&amp;gt;%
+  dplyr::mutate(country = trimws(country)) %&amp;gt;%
+  dplyr::mutate(country = factor(country, levels = country))
+plotly::plot_ly(
+  data = df_ASEAN,
+  x = ~country,
+  # y = ~unrecovered,
+  y = ~ confirmed,
+  # text =  ~ confirmed,
+  # textposition = &amp;#39;auto&amp;#39;,
+  type = &amp;quot;bar&amp;quot;,
+  name = &amp;quot;Confirmed&amp;quot;,
+  marker = list(color = active_color)
+) %&amp;gt;%
+  plotly::add_trace(
+    y = ~death,
+    # text =  ~ death,
+    # textposition = &amp;#39;auto&amp;#39;,
+    name = &amp;quot;Death&amp;quot;,
+    marker = list(color = death_color)
+  ) %&amp;gt;%
+  plotly::layout(
+    barmode = &amp;quot;stack&amp;quot;,
+    yaxis = list(title = &amp;quot;Total cases&amp;quot;),
+    xaxis = list(title = &amp;quot;&amp;quot;),
+    hovermode = &amp;quot;compare&amp;quot;,
+    margin = list(
+      # l = 60,
+      # r = 40,
+      b = 10,
+      t = 10,
+      pad = 2
+    )
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;preserve994b2a3acfdbc6b2&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;map&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;Map&lt;/h1&gt;
+&lt;div id=&#34;world-map-of-cases-use-and---icons-to-zoom-inout&#34; class=&#34;section level3&#34;&gt;
+&lt;h3&gt;&lt;strong&gt;World map of cases&lt;/strong&gt; (&lt;em&gt;use + and - icons to zoom in/out&lt;/em&gt;)&lt;/h3&gt;
+&lt;pre class=&#34;r&#34;&gt;&lt;code&gt;# map tab added by Art Steinmetz
+library(leaflet)
+library(leafpop)
+library(purrr)
+cv_data_for_plot &amp;lt;- coronavirus %&amp;gt;%
+  # dplyr::filter(country == &amp;quot;Indonesia&amp;quot;) %&amp;gt;%
+  dplyr::filter(cases &amp;gt; 0) %&amp;gt;%
+  dplyr::group_by(country, province, lat, long, type) %&amp;gt;%
+  dplyr::summarise(cases = sum(cases)) %&amp;gt;%
+  dplyr::mutate(log_cases = 2 * log(cases)) %&amp;gt;%
+  dplyr::ungroup()
+cv_data_for_plot.split &amp;lt;- cv_data_for_plot %&amp;gt;% split(cv_data_for_plot$type)
+pal &amp;lt;- colorFactor(c(&amp;quot;orange&amp;quot;, &amp;quot;red&amp;quot;, &amp;quot;green&amp;quot;), domain = c(&amp;quot;confirmed&amp;quot;, &amp;quot;death&amp;quot;, &amp;quot;recovered&amp;quot;))
+map_object &amp;lt;- leaflet() %&amp;gt;% addProviderTiles(providers$Stamen.Toner)
+names(cv_data_for_plot.split) %&amp;gt;%
+  purrr::walk(function(df) {
+    map_object &amp;lt;&amp;lt;- map_object %&amp;gt;%
+      addCircleMarkers(
+        data = cv_data_for_plot.split[[df]],
+        lng = ~long, lat = ~lat,
+        #                 label=~as.character(cases),
+        color = ~ pal(type),
+        stroke = FALSE,
+        fillOpacity = 0.8,
+        radius = ~log_cases,
+        popup = leafpop::popupTable(cv_data_for_plot.split[[df]],
+          feature.id = FALSE,
+          row.numbers = FALSE,
+          zcol = c(&amp;quot;type&amp;quot;, &amp;quot;cases&amp;quot;, &amp;quot;country&amp;quot;, &amp;quot;province&amp;quot;)
+        ),
+        group = df,
+        #                 clusterOptions = markerClusterOptions(removeOutsideVisibleBounds = F),
+        labelOptions = labelOptions(
+          noHide = F,
+          direction = &amp;quot;auto&amp;quot;
+        )
+      )
+  })
+map_object %&amp;gt;%
+  addLayersControl(
+    overlayGroups = names(cv_data_for_plot.split),
+    options = layersControlOptions(collapsed = FALSE)
+  )&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;preservead0f3b2aee536608&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;about&#34; class=&#34;section level1&#34;&gt;
+&lt;h1&gt;About&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;The Coronavirus Dashboard: the case of Indonesia&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;This &lt;a href=&#34;https://www.antoinesoetewey.com/files/coronavirus-dashboard.html&#34;&gt;Coronavirus dashboard: the case of Indonesia&lt;/a&gt; provides an overview of the 2019 Novel Coronavirus COVID-19 (2019-nCoV) epidemic for Indonesia and compare with Singapore, Malaysia and Thailand. This dashboard is built with R using the R Makrdown framework and was adapted from this &lt;a href=&#34;https://ramikrispin.github.io/coronavirus_dashboard/&#34; target=&#34;_blank&#34;&gt;dashboard&lt;/a&gt; by Rami Krispin.
+&lt;strong&gt;Code&lt;/strong&gt;
+The code behind this dashboard is available on &lt;a href=&#34;https://github.com/AntoineSoetewey/coronavirus_dashboard&#34; target=&#34;_blank&#34;&gt;GitHub&lt;/a&gt;.
+&lt;strong&gt;Data&lt;/strong&gt;
+The input data for this dashboard is the dataset available from the &lt;a href=&#34;https://github.com/RamiKrispin/coronavirus&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;{coronavirus}&lt;/code&gt;&lt;/a&gt; R package. Make sure to download the development version of the package to have the latest data:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;install.packages(&amp;quot;devtools&amp;quot;)
+devtools::install_github(&amp;quot;RamiKrispin/coronavirus&amp;quot;)&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The data and dashboard are refreshed on a daily basis.
+The raw data is pulled from the Johns Hopkins University Center for Systems Science and Engineering (JHU CCSE) Coronavirus &lt;a href=&#34;https://github.com/RamiKrispin/coronavirus-csv&#34; target=&#34;_blank&#34;&gt;repository&lt;/a&gt;.
+&lt;strong&gt;Information&lt;/strong&gt;
+More information about this dashboard (and how to replicate it for your own country) can be found in this &lt;a href=&#34;https://www.statsandr.com/blog/how-to-create-a-simple-coronavirus-dashboard-specific-to-your-country-in-r/&#34;&gt;article&lt;/a&gt;.
+&lt;strong&gt;Update&lt;/strong&gt;
+The data is as of Wednesday May 27, 2020 and the dashboard has been updated on Friday May 29, 2020.
+&lt;br&gt;
+&lt;em&gt;Go back to &lt;a href=&#34;https://www.statsandr.com/&#34;&gt;www.statsandr.com&lt;/a&gt; (blog) or &lt;a href=&#34;https://www.antoinesoetewey.com/&#34;&gt;www.antoinesoetewey.com&lt;/a&gt; (personal website)&lt;/em&gt;.
+© 2020 GitHub, Inc.&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
