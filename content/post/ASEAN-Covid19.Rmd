@@ -1,6 +1,7 @@
 ---
 title: "Covid19 in 4 ASEAN Countries"
 author: "Darsono & Aulia"
+date : 2020-05-29
 output: 
   flexdashboard::flex_dashboard:
     orientation: rows
@@ -70,7 +71,9 @@ df_daily <- coronavirus %>%
 df1 <- coronavirus %>% dplyr::filter(date == max(date))
 ```
 
-Summary
+Covid19 (Corona Virus Disease 2019) telah menjadi pandemi global selama 5 bulan di awal tahun 2020 ini. Penyebaran pertama yang terjadi di Wuhan pada akhir December 2019, pada akhirnya menyebar di hampir seluruh penjuru dunia. Hingga saat ini sudah lebih dari 5 juta orang yang positive Covid19 ini.
+
+Data ini melihatkan perkembangan Covid19 dari awal hingga hari ini di 4 negara ASEAN, yaitu Indonesia, Malaysia, Singapore dan Thailand.
 =======================================================================
 
 Row {data-width=400}

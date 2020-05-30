@@ -226,4 +226,12 @@
     <loc>/post/asean-covid19/</loc>
   </url>
   
+  <url>
+    <loc>/post/asean-covid19.knit/</loc>
+  </url>
+  
+  <url>
+    <loc>/post/asean-covid19.utf8/</loc>
+  </url>
+  
 </urlset>
