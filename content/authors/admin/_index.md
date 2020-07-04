@@ -23,7 +23,7 @@ interests:
 organizations:
 - name: Universitas Muhammadiyah Yogyakarta
   url: "https://ipief.umy.ac.id/dosen/susilo-nur-aji-cokro-darsono-se-m-rdm/"
-role: Lecture in Economics Development
+role: Lecture in Economics 
 social:
 - icon: envelope
   icon_pack: fas
@@ -44,6 +44,6 @@ user_groups:
 - Visitors
 ---
 
-Susilo Darsono is a researcher of sustainable investment at the Universitas Muhammadiyah Yogyakarya. His research interests include sustainable investment, capital market, islamic economics and finance, machine learning and data science for economics, business and finance. 
+Susilo Darsono is a researcher of Sustainable Economics at the Universitas Muhammadiyah Yogyakarta. Currently, he is pursuing PhD in Business Administration at Asia University, Taiwan. His research interests include sustainable investment, capital market, islamic economics and finance, machine learning and data science for economics, business and finance. 
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+
