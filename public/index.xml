@@ -801,5 +801,41 @@ Figure 1: A fancy pie chart.
 </description>
     </item>
     
+    <item>
+      <title>Apa itu Bahasa R?</title>
+      <link>/post/apa-itu-r/apaitur/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>/post/apa-itu-r/apaitur/</guid>
+      <description>
+
+
+&lt;div id=&#34;pengenalan-r&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;Pengenalan R&lt;/h2&gt;
+&lt;p&gt;R adalah bahasa dan lingkungan (environment) untuk komputasi statistik dan grafik. Ini merupakan salah satu proyek dari GNU yang serupa dengan bahasa S dan lingkungan yang dikembangkan di Laboratorium Bell (yang sekarang bernama Lucent Technologies, dulunya AT&amp;amp;T) oleh John Chambers dan rekan. R itu memiliki implementasi yang berbeda dengan S. Ada beberapa perbedaan yang sangat penting, tetapi banyak kode yang ditulis untuk S tidak dapat berfungsi di R.&lt;/p&gt;
+&lt;p&gt;R diperkenalkan pertama kali pada bulan Agustus 1993, yang di desain oleh Ross Ihaka dan Robert Gentleman yang pada saat itu diketahui sebagai “R&amp;amp;R” dari Departemen Statistik, Universitas Auckland. R yang saat ini dikenal adalah hasil dari usaha kolaborasi dari berbagai kontributor di seluruh dunia.&lt;/p&gt;
+&lt;p&gt;R menyediakan variasi yang sangat luas untuk statistik seperti, linear dan nonlinear, modelling, uji statistik klasik, analisis time-series, klasifikasi, clustering, dll dan juga teknik grafik yang sangat dapat diperluas. Bahasa S biasanya menjadi pilihan untuk kendaraan dalam penelitian di metodologi statistik dan R menyediakan rute Open Source untuk berpartisipasi dalam aktivitas tersebut.&lt;/p&gt;
+&lt;p&gt;Salah satu kekuatan R adalah kemudahannya untuk mendesain dengan baik plots kualitas publikasi yang dapat diproduksi, termasuk simbol matematika dan rumus yang dibutuhkan.&lt;/p&gt;
+&lt;p&gt;R ini adalah Open Source. Tersedia Software R Gratis untuk menjalankan bahasa R dibawah lisensi dari Free Software Foundation’s GNU General Public Lincense dalam formulir sumber kode. R bisa dijalankan di berbagai sistem operasi pada komputer, mulai di Linux, Windows dan MacOs.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div id=&#34;r-environment&#34; class=&#34;section level2&#34;&gt;
+&lt;h2&gt;R Environment&lt;/h2&gt;
+&lt;p&gt;Apa saja yang dimiliki oleh R?
+Apa yang dibutuhkan untuk menjalankan R?
+Kita akan membahas lingkungan dari R tersebut.&lt;/p&gt;
+&lt;p&gt;R adalah suatu sistem yang telah terintegrasi sebagai fasilitas aplikasi untuk manipulasi data, perhitungan dan menampilkan grafik. Hal ini termasuk:
+1. Efektivitas penanganan data dan fasilitas penyimpanan
+2. Perangkat untuk perhitungan array, dalam matriks tertentu
+3. Alat perantara untuk analisis data yang besar, koheren dan terintegrasi
+4. Memiliki fasilitas untuk mengubah analisis data menjadi grafik yang dapat ditampilkan baik di layar maupun dalam bentuk cetak
+5. Bahasa pemograman yang dikembangkan dengan baik, sederhana dan efektif yang mencakup kondisional, loop, fungsi rekursif yang ditentukan pengguna dan fasilitas input dan output.&lt;/p&gt;
+&lt;p&gt;Istilah “lingkungan / Environment” dimaksudkan untuk menggambarkannya sebagai sistem yang sepenuhnya terencana dan koheren, bukan pertambahan alat yang sangat spesifik dan tidak fleksibel, seperti yang sering terjadi dengan perangkat lunak analisis data lainnya.&lt;/p&gt;
+&lt;p&gt;R, seperti S, dirancang dengan bahasa komputer yang sebenarnya, dan memungkinkan pengguna untuk menambahkan fungsionalitas tambahan dengan mendefinisikan fungsi baru. Banyak dari sistem itu sendiri ditulis dalam dialek R, yang membuatnya mudah bagi pengguna untuk mengikuti pilihan algoritmik yang dibuat. Untuk tugas-tugas yang intensif secara komputasi, C, C ++ dan kode Fortran dapat dihubungkan dan dipanggil pada saat run time. Pengguna mahir dapat menulis kode C untuk memanipulasi objek R secara langsung.&lt;/p&gt;
+&lt;p&gt;Banyak pengguna menganggap R sebagai sistem statistik. Kami lebih suka menganggapnya sebagai lingkungan di mana teknik statistik diterapkan. R dapat diperpanjang (dengan mudah) melalui paket. Ada sekitar delapan paket yang disediakan dengan distribusi R dan banyak lagi tersedia melalui keluarga CRAN situs Internet yang mencakup berbagai statistik modern.&lt;/p&gt;
+&lt;p&gt;R memiliki format dokumentasi mirip-LaTeX sendiri, yang digunakan untuk memasok dokumentasi komprehensif, baik secara online dalam sejumlah format maupun dalam bentuk cetak.&lt;/p&gt;
+&lt;p&gt;Sumber: &lt;a href=&#34;https://www.r-project.org/about.html&#34; class=&#34;uri&#34;&gt;https://www.r-project.org/about.html&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>
